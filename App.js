@@ -17,7 +17,7 @@ import {
 const App = () => {
   return (
     <SafeAreaView style={{backgroundColor: 'red'}}>
-      <View style={{backgroundColor: 'blue', flex: 1}}>
+      <View style={{backgroundColor: 'blue', flex: 1, alig}}>
         <Text>Hello</Text>
       </View>
     </SafeAreaView>
