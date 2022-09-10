@@ -58,83 +58,82 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
+// import LinearGradient from 'react-native-linear-gradient';
 import AppButton from './src/components/Button';
+import {
+  FacebookSocialButton,
+  AppleSocialButton,
+  TwitterSocialButton,
+} from 'react-native-social-buttons';
 
-const logo = require('./assets/Login/q.png');
+const logo = require('./assets/Login/GIO-logo-green.png');
 
 const App = () => {
   return (
     <SafeAreaView style={styles.containerView}>
-      <View style={{flex: 1, backgroundColor: 'green'}}>
-        <Text
-          style={{
-            color: 'white',
-            marginTop: 54,
-            alignSelf: 'center',
-            fontSize: 20,
-          }}>
-          ようこそ Golf in One へ
-        </Text>
-        <View></View>
-      </View>
-      <View
-        style={{
-          flex: 2,
-          backgroundColor: 'white',
-          borderRadius: 8,
-          margin: 8,
-          marginTop: -32,
-        }}>
-        <View
-          style={{
-            width: 200,
-            height: 200,
-            alignSelf: 'center',
-            marginTop: -100,
-          }}>
+      <View style={{flex: 1}}>
+        <View style={{justifyContent: 'center', alignItems: 'center'}}>
           <Image
             source={logo}
             style={{
-              display: 'flex',
-              alignItems: 'center',
+              height: 110,
               justifyContent: 'center',
-              alignSelf: 'center',
-              width: 200,
-              height: 200,
-              borderRadius: 100,
+              alignItems: 'center',
+              padding: 10,
+              resizeMode: 'center',
             }}
           />
+        </View>
+        <AppleSocialButton
+          style={{margin: 10}}
+          onPress={() => {}}
+          buttonViewStyle={styles.buttonViewStyle}
+          logoStyle={styles.logoStyle}
+          textStyle={styles.textStyle}
+        />
+        <FacebookSocialButton
+          style={{margin: 10}}
+          onPress={() => {}}
+          buttonViewStyle={styles.buttonViewStyle}
+          logoStyle={styles.logoStyle}
+          textStyle={styles.textStyle}
+        />
+        <TwitterSocialButton
+          style={{margin: 10}}
+          onPress={() => {}}
+          buttonViewStyle={styles.buttonViewStyle}
+          logoStyle={styles.logoStyle}
+          textStyle={styles.textStyle}
+        />
+        <TextInput
+          placeholder="Email"
+          autoCapitalize="none"
+          keyboardType="email-address"
+          autoCorrect={false}
+          wrapperStyles={styles.emailInput}
+          style={styles.textInput}
+        />
+        <TextInput
+          placeholder="Password"
+          autoCapitalize="none"
+          keyboardType="default"
+          autoCorrect={false}
+          wrapperStyles={styles.emailInput}
+          style={styles.textInput}
+        />
+        <View style={styles.screenContainer}>
+          <AppButton title="サインイン" size="sm" backgroundColor="#FFE100" />
           <TouchableOpacity
-            // onPress={addImage}
-            style={styles.uploadBtn}>
-            <Text>Upload Image</Text>
+            style={{
+              alignItems: 'center',
+              marginTop: 12,
+            }}>
+            <Text style={{color: 'white'}}>パスワードをお忘れの方</Text>
           </TouchableOpacity>
         </View>
-        <View style={{marginTop: 16}}>
-          <TextInput
-            placeholder="ニックネーム"
-            autoCapitalize="none"
-            keyboardType="email-address"
-            autoCorrect={false}
-            wrapperStyles={styles.emailInput}
-            style={styles.textInput}
-          />
-          <Text
-            style={{
-              color: 'black',
-              alignSelf: 'center',
-              fontSize: 20,
-              padding: 16
-            }}>
-            ※ ニックネームは後から変更できます ※ 4 〜 20文字以内
-          </Text>
-          <AppButton
-            title="設定する"
-            size="sm"
-            backgroundColor="#FFE100"
-            color="black"
-            style={{margin: 10}}
-          />
+
+        <View style={styles.bottomView}>
+          <Text>既にアカウントをお持ちの方はログイン</Text>
         </View>
       </View>
     </SafeAreaView>
@@ -144,24 +143,38 @@ const App = () => {
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,
-    backgroundColor: 'grey',
+    backgroundColor: 'green',
   },
-  uploadBtnContainer: {
-    opacity: 0.7,
-    position: 'absolute',
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'lightgrey',
-    width: '100%',
-    height: '25%',
+  sectionContainer: {
+    marginTop: 32,
+    paddingHorizontal: 24,
   },
-  uploadBtn: {
-    display: 'flex',
-    justifyContent: 'center',
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+  },
+  sectionDescription: {
+    marginTop: 8,
+    fontSize: 18,
+    fontWeight: '400',
+  },
+  highlight: {
+    fontWeight: '700',
+  },
+  backgroundStyle: {
     backgroundColor: 'red',
-    alignSelf: 'center',
-    height: 50,
-    borderRadius: 16,
+  },
+  wrapper: {
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+  },
+  scroll: {
+    width: '100%',
+  },
+  scrollContainer: {
+    alignItems: 'center',
+    paddingBottom: 30,
   },
   textInput: {
     alignItems: 'center',
@@ -171,8 +184,38 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 8,
     backgroundColor: 'white',
-    marginTop: 42
-  }
+  },
+  screenContainer: {
+    justifyContent: 'center',
+    padding: 10,
+  },
+  buttonViewStyle: {
+    justifyContent: 'center',
+    margin: 10,
+    width: '95%',
+    alignSelf: 'center',
+    height: 50,
+    borderRadius: 25,
+  },
+  logoStyle: {},
+  textStyle: {},
+  bottomView: {
+    backgroundColor: 'white',
+    width: '100%',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 0,
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
+  },
+  logo: {
+    marginBottom: 83,
+    marginTop: 100,
+  },
 });
 
 export default App;
