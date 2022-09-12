@@ -8,14 +8,14 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import AppButton from '../../../components/Button';
+import {AppButton} from '../../../components/Button';
 import * as ImagePicker from 'react-native-image-picker';
 
 import {ImagePickerHeader} from '../../ImagePickerHeader';
 import {ImagePickerModal} from '../../ImagePickerModal';
 import {ImagePickerAvatar} from '../../ImagePickerAvatar';
 
-const Settings = () => {
+export const Settings = ({ navigation }) => {
   const [pickerResponse, setPickerResponse] = useState(null);
   const [visible, setVisible] = useState(false);
 
@@ -93,6 +93,7 @@ const Settings = () => {
           backgroundColor="#FFE100"
           color="black"
           style={{margin: 10}}
+          onPress={() => navigation.navigate('Guide')}
         />
       </View>
       </View>
@@ -138,5 +139,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f2fC',
   },
 });
-
-export default Settings;

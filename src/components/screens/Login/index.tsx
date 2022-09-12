@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import AppButton from '../../../components/Button';
+import {AppButton} from '../../../components/Button';
 import {
   FacebookSocialButton,
   AppleSocialButton,
@@ -17,7 +17,7 @@ import {
 
 const logo = require('../../../../assets/Login/GIO-logo-green.png');
 
-const Login = () => {
+const Login = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.containerView}>
       <View style={{flex: 1}}>
@@ -71,7 +71,7 @@ const Login = () => {
           style={styles.textInput}
         />
         <View style={styles.screenContainer}>
-          <AppButton title="サインイン" size="sm" backgroundColor="#FFE100" />
+          <AppButton title="サインイン" size="sm" backgroundColor="#FFE100" onPress={() => navigation.navigate('Settings')}/>
           <TouchableOpacity
             style={{
               alignItems: 'center',

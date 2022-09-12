@@ -8,11 +8,12 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import AppButton from '../../../components/Button';
+import {AppButton} from '../../../components/Button';
+import { WebView } from 'react-native-webview';
 
-const logo = require('../../../../assets/Login/icon_flag..png');
+const logo = require('../../../../assets/Login/icon_flag.png');
 
-const Guide = () => {
+export const Guide = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.containerView}>
       <Image
@@ -66,5 +67,3 @@ const styles = StyleSheet.create({
     backgroundColor: 'green',
   },
 });
-
-export default Guide;
