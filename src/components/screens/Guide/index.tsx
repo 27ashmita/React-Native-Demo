@@ -45,7 +45,15 @@ const Guide = () => {
           height: 200,
           marginTop: 12,
           marginBottom: 12
-        }}></View>
+        }}>
+          <WebView
+         source = {{ uri:
+         'https://www.youtube.com/embed/qZVTkn2NjS0' }}
+         style = {{flex:1, borderRadius: 8}}
+         domStorageEnabled={true}
+         javaScriptEnabled={true}
+         />
+        </View>
         <AppButton title="後で見る" size="sm" backgroundColor="white" margin='10'/>
       </View>
     </SafeAreaView>

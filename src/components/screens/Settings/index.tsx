@@ -9,6 +9,7 @@ import {
   Image,
 } from 'react-native';
 import AppButton from '../../../components/Button';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 const logo = require('../../../../assets/Login/q.png');
 

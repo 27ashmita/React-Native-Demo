@@ -11,7 +11,7 @@ import {
 
   TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
 
-  const AppButton = ({ onPress, title }) => (
+  export const AppButton = ({ onPress, title }) => (
     <TouchableOpacity onPress={onPress} style={styles.appButtonContainer}>
       <Text style={styles.appButtonText}>{title}</Text>
     </TouchableOpacity>
@@ -34,5 +34,3 @@ const styles = StyleSheet.create({
         textTransform: "uppercase"
       }
 });
-
-export default AppButton;
