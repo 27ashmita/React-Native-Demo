@@ -386,6 +386,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './src/components/screens/Login';
 import { Settings } from './src/components/screens/Settings';
 import { Guide } from './src/components/screens/Guide';
+import Register from './src/components/screens/Signup';
 
 const Stack = createNativeStackNavigator();
 
@@ -396,6 +397,7 @@ const App = () => {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Guide" component={Guide} />
+        <Stack.Screen name="Register" component={Register} />
       </Stack.Navigator>
     </NavigationContainer>
   );

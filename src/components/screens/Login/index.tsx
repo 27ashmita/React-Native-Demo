@@ -76,7 +76,9 @@ const Login = ({ navigation }) => {
             style={{
               alignItems: 'center',
               marginTop: 12,
-            }}>
+            }}
+            onPress={() => navigation.navigate('Register')}
+            >
             <Text style={{color: 'white'}}>パスワードをお忘れの方</Text>
           </TouchableOpacity>
         </View>
