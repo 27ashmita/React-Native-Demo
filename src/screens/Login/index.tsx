@@ -1,23 +1,46 @@
-import React, { Component } from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   Image,
+  Keyboard,
 } from 'react-native';
-import {AppButton} from '../../../components/Button';
+import {Button}  from "../../components/atoms/Button";
+import {TextInput} from "../../components/atoms/TextInput";
 import {
   FacebookSocialButton,
   AppleSocialButton,
   TwitterSocialButton,
 } from 'react-native-social-buttons';
+import {useFormik} from 'formik';
+import {loginValidationSchema} from '../../validation';
 
-const logo = require('../../../../assets/Login/GIO-logo-green.png');
+const logo = require('../../../assets/Login/GIO-logo-green.png');
 
-const Login = ({ navigation }) => {
+interface LoginInput {
+  email: string;
+  password: string;
+}
+
+const Login = ({navigation}) => {
+  const formik = useFormik<LoginInput>({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: loginValidationSchema,
+    onSubmit: values => {
+      console.log('login pressed');
+      alert(JSON.stringify(values, null, 2));
+      Keyboard.dismiss();
+    },
+  });
+  const [count, setCount] = useState(0);
+  // const onPress = () => setCount(prevCount => {prevCount + 1;});
+
   return (
     <SafeAreaView style={styles.containerView}>
       <View style={{flex: 1}}>
@@ -56,29 +79,35 @@ const Login = ({ navigation }) => {
         />
         <TextInput
           placeholder="Email"
-          autoCapitalize="none"
-          keyboardType="email-address"
-          autoCorrect={false}
-          wrapperStyles={styles.emailInput}
-          style={styles.textInput}
+          value={formik.values.email}
+          onChangeText={(text: string) => {
+            formik.setFieldValue("email", text);
+          }}
+          error={formik.errors.email}
         />
         <TextInput
+          value={formik.values.password}
+          onChangeText={(text: string) => {
+            formik.setFieldValue("password", text);
+          }}
+          error={formik.errors.password}
           placeholder="Password"
-          autoCapitalize="none"
-          keyboardType="default"
-          autoCorrect={false}
-          wrapperStyles={styles.emailInput}
-          style={styles.textInput}
+          secureTextEntry
         />
         <View style={styles.screenContainer}>
-          <AppButton title="サインイン" size="sm" backgroundColor="#FFE100" onPress={() => navigation.navigate('Settings')}/>
+          <Button onPress={formik.submitForm} title="Login" />
+          {/* <TouchableOpacity
+            onPress={() => {formik.submitForm}}
+            // enable={true}
+            style={styles.appButtonContainer}>
+            <Text style={styles.appButtonText}>サインイン</Text>
+          </TouchableOpacity> */}
           <TouchableOpacity
             style={{
               alignItems: 'center',
               marginTop: 12,
             }}
-            onPress={() => navigation.navigate('Register')}
-            >
+            onPress={() => navigation.navigate('Register')}>
             <Text style={{color: 'white'}}>パスワードをお忘れの方</Text>
           </TouchableOpacity>
         </View>
@@ -127,26 +156,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingBottom: 30,
   },
-  textInput: {
-    alignItems: 'center',
-    padding: 16,
-    margin: 10,
-    borderColor: '#cccccc',
-    borderWidth: 1,
-    borderRadius: 8,
-    backgroundColor: 'white',
-  },
   screenContainer: {
     justifyContent: 'center',
     padding: 10,
-  },
-  buttonViewStyle: {
-    justifyContent: 'center',
-    margin: 10,
-    width: '95%',
-    alignSelf: 'center',
-    height: 50,
-    borderRadius: 25,
   },
   logoStyle: {},
   textStyle: {},
@@ -167,6 +179,14 @@ const styles = StyleSheet.create({
     marginBottom: 83,
     marginTop: 100,
   },
+  buttonViewStyle: {
+    justifyContent: 'center',
+    margin: 10,
+    width: '95%',
+    alignSelf: 'center',
+    height: 50,
+    borderRadius: 25,
+  }
 });
 
 export default Login;

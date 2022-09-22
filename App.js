@@ -7,21 +7,12 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Login from './src/components/screens/Login';
-import { Settings } from './src/components/screens/Settings';
-import { Guide } from './src/components/screens/Guide';
-import Register from './src/components/screens/Signup';
+import Login from './src/screens/Login';
+import { Settings } from './src/screens/Settings';
+import { Guide } from './src/screens/Guide';
+import Register from './src/screens/Signup';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,10 +20,10 @@ const App = () => {
   return(
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Settings" component={Settings} />
-        <Stack.Screen name="Guide" component={Guide} />
-        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen options={{headerShown: false}} name="Login" component={Login} />
+        <Stack.Screen options={{headerShown: false}} name="Settings" component={Settings} />
+        <Stack.Screen options={{headerShown: false}} name="Guide" component={Guide} />
+        <Stack.Screen options={{headerShown: false}} name="Register" component={Register} />
       </Stack.Navigator>
     </NavigationContainer>
   );

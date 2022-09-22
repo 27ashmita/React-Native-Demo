@@ -4,15 +4,33 @@ import {
   StyleSheet,
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   Image,
+  Keyboard
 } from 'react-native';
-import {AppButton} from '../../../components/Button';
+import {Button, TextInput} from '../../components';
+import {useFormik} from 'formik';
+import {loginValidationSchema} from '../../validation';
 
-const logo = require('../../../../assets/Login/GIO-logo-green.png');
+const logo = require('../../../assets/Login/GIO-logo-green.png');
+interface LoginInput {
+  email: string;
+  password: string;
+}
 
 const Register = ({ navigation }) => {
+  const formik = useFormik<LoginInput>({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: loginValidationSchema,
+    onSubmit: values => {
+      console.log('login pressed');
+      alert(JSON.stringify(values, null, 2));
+      Keyboard.dismiss();
+    },
+  });
   return (
     <SafeAreaView style={styles.containerView}>
       <View style={{flex: 1}}>
@@ -30,22 +48,23 @@ const Register = ({ navigation }) => {
         </View>
         <TextInput
           placeholder="Email"
-          autoCapitalize="none"
-          keyboardType="email-address"
-          autoCorrect={false}
-          wrapperStyles={styles.emailInput}
-          style={styles.textInput}
+          value={formik.values.email}
+          onChangeText={(text: string) => {
+            formik.setFieldValue("email", text);
+          }}
+          error={formik.errors.email}
         />
         <TextInput
+          value={formik.values.password}
+          onChangeText={(text: string) => {
+            formik.setFieldValue("password", text);
+          }}
+          error={formik.errors.password}
           placeholder="Password"
-          autoCapitalize="none"
-          keyboardType="default"
-          autoCorrect={false}
-          wrapperStyles={styles.emailInput}
-          style={styles.textInput}
+          secureTextEntry
         />
         <View style={styles.screenContainer}>
-          <AppButton title="サインアップ" size="sm" backgroundColor="black" onPress={() => navigation.navigate('Settings')}/>
+          <Button onPress={formik.submitForm} title="Login" />
           <TouchableOpacity
             style={{
               alignItems: 'center',

@@ -4,16 +4,13 @@ import {
   StyleSheet,
   View,
   Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
 } from 'react-native';
-import {AppButton} from '../../../components/Button';
+import {Button, TextInput} from '../../components';
 import * as ImagePicker from 'react-native-image-picker';
 
-import {ImagePickerHeader} from '../../ImagePickerHeader';
-import {ImagePickerModal} from '../../ImagePickerModal';
-import {ImagePickerAvatar} from '../../ImagePickerAvatar';
+import {ImagePickerHeader} from '../../components/atoms/ImagePickerHeader';
+import {ImagePickerModal} from '../../components/atoms/ImagePickerModal';
+import {ImagePickerAvatar} from '../../components/atoms/ImagePickerAvatar';
 
 export const Settings = ({ navigation }) => {
   const [pickerResponse, setPickerResponse] = useState(null);
@@ -70,13 +67,13 @@ export const Settings = ({ navigation }) => {
         />
       
       <View style={{marginTop: 10}}>
-        <TextInput
-          placeholder="ニックネーム"
-          autoCapitalize="none"
-          keyboardType="email-address"
-          autoCorrect={false}
-          wrapperStyles={styles.emailInput}
-          style={styles.textInput}
+      <TextInput
+          placeholder="Email"
+          // value={formik.values.email}
+          // onChangeText={(text: string) => {
+          //   formik.setFieldValue("email", text);
+          // }}
+          // error={formik.errors.email}
         />
         <Text
           style={{
@@ -87,14 +84,7 @@ export const Settings = ({ navigation }) => {
           }}>
           ※ ニックネームは後から変更できます ※ 4 〜 20文字以内
         </Text>
-        <AppButton
-          title="設定する"
-          size="sm"
-          backgroundColor="#FFE100"
-          color="black"
-          style={{margin: 10}}
-          onPress={() => navigation.navigate('Guide')}
-        />
+        <Button title="Login" />
       </View>
       </View>
       {/* </View> */}

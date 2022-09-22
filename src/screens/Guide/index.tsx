@@ -4,14 +4,12 @@ import {
   StyleSheet,
   View,
   Text,
-  TextInput,
-  TouchableOpacity,
   Image,
 } from 'react-native';
-import {AppButton} from '../../../components/Button';
+import { Button } from "../../components/atoms/Button";
 import { WebView } from 'react-native-webview';
 
-const logo = require('../../../../assets/Login/icon_flag.png');
+const logo = require('../../../assets/Login/icon_flag.png');
 
 export const Guide = ({ navigation }) => {
   return (
@@ -38,7 +36,7 @@ export const Guide = ({ navigation }) => {
         Golf in One にご登録いただき ありがとうございます！！
       </Text>
       <View style={{margin: 16}}>
-      <AppButton title="アプリの使い方の動画を見る" size="sm" backgroundColor="#FFE100" margin='10'/>
+      <Button title="Login" />
       <View
         style={{
           backgroundColor: 'white',
@@ -55,7 +53,7 @@ export const Guide = ({ navigation }) => {
          javaScriptEnabled={true}
          />
         </View>
-        <AppButton title="後で見る" size="sm" backgroundColor="white" margin='10'/>
+        <Button title="Login" />
       </View>
     </SafeAreaView>
   );

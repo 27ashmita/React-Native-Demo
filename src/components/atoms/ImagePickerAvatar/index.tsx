@@ -5,10 +5,9 @@ import {
   TouchableOpacity,
   Image,
   View,
-  ImageBackground,
 } from 'react-native';
 
-import { images } from '../../../assets';
+import { images } from '../../../../assets'
 
 export const ImagePickerAvatar = ({ uri, onPress }) => {
   return (
