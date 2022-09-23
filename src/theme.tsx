@@ -9,7 +9,7 @@ const colors = {
   graySix: "#666666",
   grayDark: "#999999",
   grayLight: "#F3F4F8",
-  primary: "#004aad",
+  primary: "#FFE100",
   secondary: "#F05158",
   yellow: "#FFE100",
   greenBlue: "#32C2B9",

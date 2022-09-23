@@ -70,7 +70,7 @@ export const Button: React.FC<ButtonProps> = memo(
 const styles = StyleSheet.create({
   btn: {
     alignItems: "center",
-    borderRadius: 5,
+    borderRadius: 8,
     justifyContent: "center",
   },
   filled: {
