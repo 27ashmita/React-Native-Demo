@@ -39,7 +39,6 @@ const Login = ({navigation}) => {
     },
   });
   const [count, setCount] = useState(0);
-  // const onPress = () => setCount(prevCount => {prevCount + 1;});
 
   return (
     <SafeAreaView style={styles.containerView}>
@@ -95,7 +94,7 @@ const Login = ({navigation}) => {
           secureTextEntry
         />
         <View style={styles.screenContainer}>
-          <Button onPress={formik.submitForm} title="Login" />
+          <Button onPress={formik.submitForm} title="Login" backgroundColor={"red"}/>
           {/* <TouchableOpacity
             onPress={() => {formik.submitForm}}
             // enable={true}
